@@ -9,6 +9,8 @@ require('dotenv').config();
 var index = require('./routes/index');
 var users = require('./routes/users');
 
+var sql = require('./db/sql');
+
 var app = express();
 
 // view engine setup

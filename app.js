@@ -9,7 +9,7 @@ require('dotenv').config();
 var index = require('./routes/index');
 var users = require('./routes/users');
 
-var sql = require('./db/sql');
+//var sql = require('./db');
 
 var app = express();
 

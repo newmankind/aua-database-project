@@ -25,7 +25,7 @@ fs
     .forEach(function (file) {
         var model = sequelize.import(path.join(__dirname, file));
         db[model.name] = model;
-        console.log(model);
+        //console.log(model); //It list all the models
     });
 
 Object.keys(db).forEach(function (modelName) {
@@ -34,7 +34,7 @@ Object.keys(db).forEach(function (modelName) {
     }
 });
 
-//sequelize.sync();
+//sequelize.sync(); //??? What is this?
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;

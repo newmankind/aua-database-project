@@ -1,17 +1,21 @@
-var models = require('../db');
-var express = require('express');
-var router = express.Router();
+const models = require('../db');
+const express = require('express');
 
-router.get('/', function (req, res, next) {
-  models.user.findAll({
-    attributes: ['id', 'username']
-  })
-    .then(function (users) {
-      res.render('index', {
-        title: 'Express',
-        users: users
-      });
+const router = express.Router();
+
+router.get('/', async (req, res) => {
+  try {
+    const users = await models.user.findAll({
+      attributes: ['id', 'username'],
     });
+
+    res.render('index', {
+      title: 'Express',
+      users,
+    });
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 module.exports = router;

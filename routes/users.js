@@ -1,24 +1,31 @@
-var models = require('../db');
-var express = require('express');
-var router = express.Router();
+const models = require('../db');
+const express = require('express');
 
-router.post('/create', function (req, res, next) {
-  models.user.create({
-    username: req.body.username,
-    id: req.params.user_id
-  }).then(function () {
+const router = express.Router();
+
+router.post('/create', async (req, res) => {
+  try {
+    await models.user.create({
+      username: req.body.username,
+      id: req.params.user_id,
+    });
     res.redirect('/');
-  });
+  } catch (error) {
+    console.log(error);
+  }
 });
 
-router.get('/:user_id/destroy', function (req, res, next) {
-  models.user.destroy({
-    where: {
-      id: req.params.user_id
-    }
-  }).then(function () {
+router.get('/:user_id/destroy', async (req, res) => {
+  try {
+    await models.user.destroy({
+      where: {
+        id: req.params.user_id,
+      },
+    });
     res.redirect('/');
-  });
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 module.exports = router;

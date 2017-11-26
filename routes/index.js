@@ -5,8 +5,9 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
   try {
-    const users = await models.user.findAll({
-      attributes: ['id', 'username'],
+    const users = await models.Student.findAll({
+      include: [models.Department],
+      // attributes: ['student_id', 'first_name', 'last_name', 'student_email', 'student_department'],
     });
 
     res.render('index', {

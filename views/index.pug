@@ -3,15 +3,31 @@ extends layout
 block content
   h1= title
   h2 Create a new user
-  form(action="/users/create", method="post")
+  //form(action="/users/create", method="post")
     input(type="text", name="username")
     input(type="submit")
+
+  form(action="/users/department", method="post")
+    label(for="department") Department
+    input(type="text", name="department")
+    input(type="submit")
+
+  form(action="/users/student1", method="post")
+    label(for="student1") Student1
+    input(type="text", name="student1")
+    input(type="submit")
+
+  form(action="/users/student2", method="post")
+    label(for="student2") Student2
+    input(type="text", name="student2")
+    input(type="submit")
+
+  a(href="/users/student1/destroy") Destroy1
+  br
+  a(href="/users/student2/destroy") Destroy2
     
   h2 Users
   ul
   each user in users
     li
-      = user.username
-      | (
-      a(href="/users/" + user.id + "/destroy") Destroy
-      | )
+      = user.student_id + " " + user.first_name + " " + user.last_name + " " + user.student_email
